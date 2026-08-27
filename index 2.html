@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seburing — Desa di Tepi Sungai, Kalimantan Barat</title>
+<meta name="description" content="Desa Seburing, Kecamatan Semparuk, Kabupaten Sambas — tiga dusun di tepi sungai, tempat yang layak untuk pulang dan tinggal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0f3b3a;
+    --teal-mid:#155952;
+    --indigo:#2c3e66;
+    --gold:#c9a227;
+    --clay:#b5502c;
+    --paper:#f6efd9;
+    --cream-text:#f5f0e2;
+    --line: rgba(245,240,226,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--teal-deep);
+    color:var(--cream-text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'DM Serif Display', serif;
+    font-weight:400;
+    line-height:1.1;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    gap:0.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--gold);
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(15,59,58,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{font-family:'DM Serif Display', serif; font-size:1.25rem; letter-spacing:0.02em;}
+  .brand span{color:var(--gold);}
+  nav ul{list-style:none; display:flex; gap:28px; font-size:0.85rem;}
+  nav a{text-decoration:none; opacity:0.85; transition:opacity .2s;}
+  nav a:hover, nav a:focus-visible{opacity:1; color:var(--gold);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:120px 0 100px;
+    overflow:hidden;
+    background-image:
+      linear-gradient(180deg, rgba(15,59,58,0.55) 0%, rgba(15,59,58,0.88) 65%, var(--teal-deep) 100%),
+      url('images/sungai-seburing.jpg');
+    background-size:cover;
+    background-position:center 65%;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 60% 50% at 85% 10%, rgba(201,162,39,0.18), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 90%, rgba(44,62,102,0.5), transparent 60%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    max-width:14ch;
+    margin:22px 0 20px;
+  }
+  .hero h1 em{color:var(--gold); font-style:normal;}
+  .hero p.lede{
+    max-width:46ch;
+    font-size:1.08rem;
+    color:rgba(245,240,226,0.82);
+    margin-bottom:36px;
+  }
+  .hero-stats{
+    display:flex; gap:40px; flex-wrap:wrap;
+    margin-top:56px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+  }
+  .stat .num{font-family:'DM Serif Display', serif; font-size:1.9rem; color:var(--gold);}
+  .stat .label{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; opacity:0.7;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--gold); color:var(--teal-deep);
+    font-weight:600; font-size:0.92rem;
+    padding:14px 26px;
+    border-radius:2px;
+    text-decoration:none;
+    border:1px solid var(--gold);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn:hover{background:transparent; color:var(--gold); transform:translateY(-2px);}
+  .btn.ghost{background:transparent; color:var(--cream-text); border-color:var(--line);}
+  .btn.ghost:hover{border-color:var(--gold); color:var(--gold);}
+
+  /* ---------- RIVER DIVIDER (signature element) ---------- */
+  .river{
+    display:block; width:100%; height:auto;
+    margin:0; line-height:0;
+  }
+
+  /* ---------- SECTION shared ---------- */
+  section{padding:96px 0;}
+  section.paper{
+    background:var(--paper);
+    color:var(--teal-deep);
+  }
+  section.paper .eyebrow{color:var(--clay);}
+  section.paper .eyebrow::before{background:var(--clay);}
+  .section-head{max-width:52ch; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem); margin-top:14px;}
+
+  /* ---------- WHY GRID ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .why-card{
+    background:var(--teal-deep);
+    padding:36px 30px;
+  }
+  .why-card .mark{font-family:'IBM Plex Mono', monospace; color:var(--gold); font-size:0.8rem; margin-bottom:18px; display:block;}
+  .why-card h3{font-size:1.25rem; margin-bottom:10px;}
+  .why-card p{font-size:0.92rem; color:rgba(245,240,226,0.75);}
+
+  /* ---------- DUSUN (hamlets along the river) ---------- */
+  .dusun-list{display:flex; flex-direction:column; gap:0;}
+  .dusun{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:28px;
+    padding:32px 0;
+    border-top:1px solid var(--teal-deep)19;
+    border-top:1px solid rgba(15,59,58,0.15);
+    align-items:start;
+  }
+  .dusun:first-child{border-top:none;}
+  .dusun .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--clay);
+    padding-top:6px;
+  }
+  .dusun h3{font-size:1.4rem; margin-bottom:8px; color:var(--indigo);}
+  .dusun p{font-size:0.95rem; color:rgba(15,59,58,0.8); max-width:56ch;}
+  .photo-slot{
+    margin-top:16px;
+    height:220px;
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .photo-slot img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(1.05);
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+  }
+  .g-item{
+    aspect-ratio:1/1;
+    background:linear-gradient(135deg, var(--teal-mid), var(--indigo));
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .g-item img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .5s ease;
+  }
+  .g-item:hover img{transform:scale(1.05);}
+  .g-item.tall{grid-row:span 2; aspect-ratio:auto;}
+
+  /* ---------- QUOTE ---------- */
+  .quote{
+    max-width:60ch;
+    font-family:'DM Serif Display', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    line-height:1.5;
+    color:var(--cream-text);
+  }
+  .quote span{display:block; margin-top:20px; font-family:'IBM Plex Mono', monospace; font-style:normal; font-size:0.78rem; color:var(--gold);}
+
+  /* ---------- STEPS ---------- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .step{padding-top:18px; border-top:2px solid var(--clay);}
+  .step .n{font-family:'IBM Plex Mono', monospace; color:var(--clay); font-size:0.8rem;}
+  .step h3{font-size:1.1rem; margin:10px 0 8px; color:var(--indigo);}
+  .step p{font-size:0.88rem; color:rgba(15,59,58,0.75);}
+
+  /* ---------- FOOTER / CTA ---------- */
+  footer{
+    padding:100px 0 60px;
+    text-align:center;
+  }
+  footer h2{font-size:clamp(2rem,4vw,3rem); max-width:16ch; margin:18px auto 30px;}
+  footer .cta-row{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:70px;}
+  .foot-meta{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:rgba(245,240,226,0.55);
+  }
+
+  @media (max-width:760px){
+    .why-grid{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .g-item.tall{grid-row:span 1;}
+    .dusun{grid-template-columns:1fr; gap:8px;}
+    .steps{grid-template-columns:1fr 1fr; row-gap:32px;}
+    nav ul{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Seburing<span>.</span></div>
+    <ul>
+      <li><a href="#kenapa">Kenapa Seburing</a></li>
+      <li><a href="#dusun">Tiga Dusun</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#pindah">Cara Datang</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Desa Seburing · Kec. Semparuk · Kab. Sambas · Kalimantan Barat</div>
+    <h1>Tempat di mana sungai <em>membesarkan</em> tiga dusun sekaligus.</h1>
+    <p class="lede">Sejak 1949, Seburing tumbuh dari sembilan kampung tua di tepi Sungai Seburing menjadi satu desa yang tenang, hijau, dan masih dijalankan dengan gotong royong. Ini bukan tempat singgah — ini tempat untuk menetap.</p>
+    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+      <a class="btn" href="#dusun">Jelajahi tiga dusun ↓</a>
+      <a class="btn ghost" href="#pindah">Cara tinggal di sini</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">1.266 Ha</div><div class="label">Luas Wilayah</div></div>
+      <div class="stat"><div class="num">4.565</div><div class="label">Jiwa, 1.447 KK</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Dusun: Kartini · Mulia · Makmur</div></div>
+      <div class="stat"><div class="num">1949</div><div class="label">Berdiri sebagai kampung</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- signature river divider -->
+<svg class="river" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,40 C150,10 250,70 400,45 C550,20 650,75 800,50 C950,25 1050,65 1200,35 L1200,90 L0,90 Z" fill="#f6efd9"></path>
+  <path d="M0,40 C150,10 250,70 400,45 C550,20 650,75 800,50 C950,25 1050,65 1200,35" fill="none" stroke="#c9a227" stroke-width="1.5" opacity="0.6"></path>
+</svg>
+
+<section class="paper" id="kenapa">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Kenapa di sini</div>
+      <h2>Alasan orang betah tinggal, bukan sekadar berkunjung</h2>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--paper);">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="mark">01</span>
+        <h3>Sungai sebagai jalan hidup</h3>
+        <p>Sungai Seburing membelah desa dan menghubungkan tiga dusun lewat jembatan gantung — tempat warga masih memancing, mencuci, dan anak-anak berenang sore hari.</p>
+      </div>
+      <div class="why-card">
+        <span class="mark">02</span>
+        <h3>Gotong royong yang masih hidup</h3>
+        <p>Penimbunan jalan, perbaikan gorong-gorong, sampai jaga malam (Satlinmas) — semua dikerjakan bersama, bukan ditunggu dari luar.</p>
+      </div>
+      <div class="why-card">
+        <span class="mark">03</span>
+        <h3>Ritme yang manusiawi</h3>
+        <p>Pengajian di masjid, musyawarah dusun, kebun dan sawah di sekeliling rumah. Tidak ada kemacetan — yang ada waktu untuk duduk dan bicara dengan tetangga.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="paper" id="dusun">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Susur sungai</div>
+      <h2>Tiga dusun, satu aliran</h2>
+    </div>
+    <div class="dusun-list">
+      <div class="dusun">
+        <div class="tag">DUSUN 1</div>
+        <div>
+          <h3>Kartini</h3>
+          <p>Titik masuk desa dari arah kecamatan — pusat kegiatan warga dan lalu lintas harian menuju balai desa.</p>
+          <div class="photo-slot"><img src="images/dusun-kartini.jpg" alt="Jalan masuk Dusun Kartini, Desa Seburing"></div>
+        </div>
+      </div>
+      <div class="dusun">
+        <div class="tag">DUSUN 2</div>
+        <div>
+          <h3>Mulia</h3>
+          <p>Dikenal lewat jembatan gantung yang melintasi Sungai Seburing — pemandangan matahari terbenam dari atas jembatan jadi favorit warga.</p>
+          <div class="photo-slot"><img src="images/jembatan-gantung.jpg" alt="Jembatan gantung di atas Sungai Seburing, Dusun Mulia"></div>
+        </div>
+      </div>
+      <div class="dusun">
+        <div class="tag">DUSUN 3</div>
+        <div>
+          <h3>Makmur</h3>
+          <p>Wilayah yang lebih tenang di sisi desa, dengan permukiman rapat di tepi air dan suasana kekeluargaan yang kental untuk keluarga muda.</p>
+          <div class="photo-slot"><img src="images/dusun-makmur.jpg" alt="Permukiman warga di Dusun Makmur, Desa Seburing"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="river" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);">
+  <path d="M0,40 C150,10 250,70 400,45 C550,20 650,75 800,50 C950,25 1050,65 1200,35 L1200,90 L0,90 Z" fill="#0f3b3a"></path>
+</svg>
+
+<section id="galeri">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Rupa desa</div>
+      <h2>Galeri Seburing</h2>
+    </div>
+    <div class="gallery">
+      <div class="g-item tall"><img src="images/sungai-seburing.jpg" alt="Senja di Sungai Seburing"></div>
+      <div class="g-item"><img src="images/jembatan-gantung.jpg" alt="Jembatan gantung Seburing"></div>
+      <div class="g-item"><img src="images/gotong-royong.jpg" alt="Gotong royong warga di sungai"></div>
+      <div class="g-item"><img src="images/sawah.jpg" alt="Sawah hijau Seburing"></div>
+      <div class="g-item"><img src="images/masjid.jpg" alt="Masjid di Desa Seburing"></div>
+      <div class="g-item tall"><img src="images/anak-anak.jpg" alt="Anak-anak Desa Seburing"></div>
+    </div>
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap">
+    <blockquote class="quote">
+      "Di sini, tetangga masih saling kenal nama anak dan cucu masing-masing. Itu yang tidak bisa dibeli di kota."
+      <span>— Warga Dusun Kartini, Desa Seburing</span>
+    </blockquote>
+  </div>
+</section>
+
+<section id="pindah">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Langkah nyata</div>
+      <h2>Cara memulai hidup di Seburing</h2>
+    </div>
+  </div>
+</section>
+<div style="background:var(--paper); color:var(--teal-deep);">
+  <div class="wrap" style="padding-bottom:96px;">
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Berkunjung dulu</h3>
+        <p>Rasakan langsung ritme desa — susur Sungai Seburing dan jembatan gantungnya.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Kenali warga</h3>
+        <p>Hadiri musyawarah atau kegiatan gotong royong untuk mulai mengenal tetangga.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Cari lahan/rumah</h3>
+        <p>Tanyakan ke perangkat desa soal lahan kosong di tiga dusun: Kartini, Mulia, Makmur.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h3>Urus administrasi</h3>
+        <p>Koordinasikan domisili dan kependudukan lewat Kantor Desa Seburing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Mulai dari sini</div>
+    <h2>Seburing menunggu untuk jadi rumahmu.</h2>
+    <div class="cta-row">
+      <a class="btn" href="#">Hubungi Kantor Desa</a>
+      <a class="btn ghost" href="#">Lihat lokasi di peta</a>
+    </div>
+    <div class="foot-meta">
+      <span>Desa Seburing · Kec. Semparuk · Kab. Sambas · Kalimantan Barat</span>
+      <span>Koordinat: 1°8′11.65″N 109°3′33.62″E</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
